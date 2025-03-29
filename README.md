@@ -119,6 +119,7 @@ Of course, to interrupt at any time, press **left control** + **space** + **esca
 ## Related links
 
  - [Home Row Mods](https://github.com/dreamsofcode-io/home-row-mods)
+ - [Kenkyo](https://github.com/argenkiwi/kenkyo)
  - Discussion on [Reddit](https://www.reddit.com/r/ErgoMechKeyboards/comments/1fojvif/is_anybody_running_kanata_on_macos_to_do_keyboard/).
  - [MacOS for KDE Users](https://matklad.github.io/2025/02/23/macos-for-kde-users.html) by [u/matklad](https://www.reddit.com/user/matklad/).
 
