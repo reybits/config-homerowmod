@@ -56,7 +56,7 @@ sudo launchctl load /Library/LaunchDaemons/org.custom.karabiner.plist
 
 ## 5. Run Kanata on Startup
 
-Create `~/Library/LaunchAgents/com.kanata.service`:
+Create `/Library/LaunchDaemons/org.custom.kanata.plist`:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -64,13 +64,13 @@ Create `~/Library/LaunchAgents/com.kanata.service`:
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.kanata.service</string>
+    <string>org.custom.kanata</string>
 
     <key>ProgramArguments</key>
     <array>
-    <string>/opt/homebrew/bin/kanata</string>
-    <string>--cfg</string>
-    <string>/Users/andrey/configs/config-homerowmod/home-row-mod-basic.kbd</string>
+        <string>/opt/homebrew/bin/kanata</string>
+        <string>--cfg</string>
+        <string>/Users/andrey/configs/config-homerowmod/home-row-mod-macos.kbd</string>
     </array>
 
     <key>RunAtLoad</key>
@@ -78,6 +78,12 @@ Create `~/Library/LaunchAgents/com.kanata.service`:
 
     <key>KeepAlive</key>
     <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Library/Logs/Kanata/kanata.out.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Library/Logs/Kanata/kanata.err.log</string>
 </dict>
 </plist>
 ```
@@ -85,19 +91,25 @@ Create `~/Library/LaunchAgents/com.kanata.service`:
 ### Load and Run
 
 ```sh
-launchctl load ~/Library/LaunchAgents/com.kanata.service.plist
+sudo launchctl load /Library/LaunchDaemons/org.custom.kanata.plist
 ```
 
 ### And check it
 
 ```sh
-launchctl list | grep kanata
+sudo launchctl list | grep kanata
+```
+
+### Kanata logs
+
+```sh
+sudo tail -f /Library/Logs/Kanata/kanata.*.log
 ```
 
 ### To unload kanata
 
 ```sh
-launchctl unload ~/Library/LaunchAgents/com.kanata.service.plist
+sudo launchctl unload /Library/LaunchDaemons/org.custom.kanata.plist
 ```
 
 Of course, to interrupt at any time, press **left control** + **space** + **escape** at their original positions.
@@ -106,6 +118,7 @@ Of course, to interrupt at any time, press **left control** + **space** + **esca
 
 ## Related links
 
- - Original discussion on [Reddit](https://www.reddit.com/r/ErgoMechKeyboards/comments/1fojvif/is_anybody_running_kanata_on_macos_to_do_keyboard/).
+ - [Home Row Mods](https://github.com/dreamsofcode-io/home-row-mods)
+ - Discussion on [Reddit](https://www.reddit.com/r/ErgoMechKeyboards/comments/1fojvif/is_anybody_running_kanata_on_macos_to_do_keyboard/).
  - [MacOS for KDE Users](https://matklad.github.io/2025/02/23/macos-for-kde-users.html) by [u/matklad](https://www.reddit.com/user/matklad/).
 
