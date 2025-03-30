@@ -22,7 +22,7 @@
 
   j (tap-hold $tap-time $hold-time j rsft)
   k (tap-hold $tap-time $hold-time k rctl)
-  l (tap-hold $tap-time $hold-time l ralt)
+  l (tap-hold $tap-time $hold-time l lalt)
   ; (tap-hold $tap-time $hold-time ; rmet)
 
   fnl (tap-hold 200 200 fn (layer-toggle fn))
