@@ -10,8 +10,8 @@
 )
 
 (defvar
-  tap-time 220
-  hold-time 175
+  tap-time 250
+  hold-time 180
 )
 
 (defalias
