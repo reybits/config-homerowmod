@@ -24,26 +24,23 @@ You can store the `.kbd` file anywhere. I keep mine in *~/configs/config-kanata/
 
 ## 4. Run Karabiner on Startup
 
-Create `/Library/LaunchDaemons/org.custom.karabiner.plist`:
+Create `/Library/LaunchDaemons/org.pqrs.service.daemon.Karabiner-VirtualHIDDevice-Daemon.plist`:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>org.custom.karabiner</string>
-
+    <string>org.pqrs.service.daemon.Karabiner-VirtualHIDDevice-Daemon</string>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProcessType</key>
+    <string>Interactive</string>
     <key>ProgramArguments</key>
     <array>
         <string>/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon</string>
     </array>
-
-    <key>RunAtLoad</key>
-    <true/>
-
-    <key>KeepAlive</key>
-    <true/>
 </dict>
 </plist>
 ```
@@ -51,7 +48,7 @@ Create `/Library/LaunchDaemons/org.custom.karabiner.plist`:
 ### Load and Run
 
 ```sh
-sudo launchctl load /Library/LaunchDaemons/org.custom.karabiner.plist
+sudo launchctl bootstrap system /Library/LaunchDaemons/org.pqrs.service.daemon.Karabiner-VirtualHIDDevice-Daemon.plist
 ```
 
 ## 5. Run Kanata on Startup
@@ -71,6 +68,8 @@ Create `/Library/LaunchDaemons/org.custom.kanata.plist`:
         <string>/opt/homebrew/bin/kanata</string>
         <string>--cfg</string>
         <string>/Users/andrey/configs/config-homerowmod/home-row-mod-macos.kbd</string>
+        <string>--port</string>
+        <string>10000</string>
     </array>
 
     <key>RunAtLoad</key>
@@ -91,7 +90,7 @@ Create `/Library/LaunchDaemons/org.custom.kanata.plist`:
 ### Load and Run
 
 ```sh
-sudo launchctl load /Library/LaunchDaemons/org.custom.kanata.plist
+sudo launchctl bootstrap system /Library/LaunchDaemons/org.custom.kanata.plist
 ```
 
 ### And check it
@@ -109,7 +108,7 @@ sudo tail -f /Library/Logs/Kanata/kanata.*.log
 ### To unload kanata
 
 ```sh
-sudo launchctl unload /Library/LaunchDaemons/org.custom.kanata.plist
+sudo launchctl bootout system /Library/LaunchDaemons/org.custom.kanata.plist
 ```
 
 Of course, to interrupt at any time, press **left control** + **space** + **escape** at their original positions.
@@ -123,4 +122,5 @@ Of course, to interrupt at any time, press **left control** + **space** + **esca
  - [A guide to home row mods](https://precondition.github.io/home-row-mods)
  - Discussion on [Reddit](https://www.reddit.com/r/ErgoMechKeyboards/comments/1fojvif/is_anybody_running_kanata_on_macos_to_do_keyboard/)
  - [MacOS for KDE Users](https://matklad.github.io/2025/02/23/macos-for-kde-users.html) by [u/matklad](https://www.reddit.com/user/matklad/)
-
+ - [Kmonad notes](https://github.com/kmonad/kmonad/blob/master/doc/installation.md#macos)
+ - [Kanata discussion](https://github.com/jtroo/kanata/discussions/1537)

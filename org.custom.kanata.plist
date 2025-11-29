@@ -10,6 +10,8 @@
         <string>/opt/homebrew/bin/kanata</string>
         <string>--cfg</string>
         <string>/Users/andrey/configs/config-homerowmod/home-row-mod-macos.kbd</string>
+        <string>--port</string>
+        <string>10000</string>
     </array>
 
     <key>RunAtLoad</key>
