@@ -6,7 +6,9 @@
 (defsrc
   f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
   bspc
+  u i
   a s d f h j k l ;
+  n m
   caps
   fn
 )
@@ -16,6 +18,7 @@
   hold-time 200
 )
 
+;; TODO: consider to use `tap-hold-tap-keys` instead of `tap-hold` action
 (defalias
   a (tap-hold $tap-time $hold-time a lmet)
   s (tap-hold $tap-time $hold-time s lalt)
@@ -34,7 +37,9 @@
 (deflayer base
   f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
   bspc
+  u i
   @a @s @d @f h @j @k @l @;
+  n m
   @cap
   @fnl
 )
@@ -42,7 +47,9 @@
 (deflayer fn
   brdn brup _ _ _ _ prev pp next mute vold volu
   del
+  u i
   a s d f h j k l ;
+  n m
   caps
   fn
 )
@@ -50,7 +57,9 @@
 (deflayer nav
   f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
   bspc
+  pgup home
   lmet lalt lctl lsft left down up rght ;
+  pgdn end
   caps
   fn
 )
